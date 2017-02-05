@@ -1,5 +1,4 @@
 'use strict';
-// Redis connection
 
 const express = require('express');
 const socketIO = require('socket.io');
@@ -14,9 +13,9 @@ const server = express()
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
 
 const io = socketIO(server);
-
 var allMessages = [];
-var redisClient = redis.createClient('6379', 'redis');
+var redisClient = redis.createClient({ host: 'redis'});
+console.log(redisClient);
 redisClient.set('all_messages', JSON.stringify(allMessages));
 io.on('connection', (socket) => {
   redisClient.get('all_messages', function (err, res) {

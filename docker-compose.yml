@@ -1,0 +1,14 @@
+version: '2'
+services:
+  angular:
+    build: ../messenger-app #path to messenger client app
+    ports:
+     - "4200:4200"
+  redis:
+    image: redis
+  express: 
+    build: . 
+    ports:
+     - "3001:3001"
+    links:
+     - redis

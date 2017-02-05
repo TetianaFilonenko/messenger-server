@@ -1,6 +1,5 @@
  # Create image based on the official Node 6 image from the dockerhub
-FROM node:7.5
-
+FROM node:6
 # Create a directory where our app will be placed
 RUN mkdir -p /usr/src/app
 
@@ -20,4 +19,4 @@ COPY . /usr/src/app
 EXPOSE 3001
 
 # Serve the app
-CMD ["node", "server.js"]	
+CMD ["node", "server.js"]
